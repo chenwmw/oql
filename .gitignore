@@ -2,3 +2,5 @@ target/
 build/
 bin/
 project/
+.cache-main
+.cache-tests
