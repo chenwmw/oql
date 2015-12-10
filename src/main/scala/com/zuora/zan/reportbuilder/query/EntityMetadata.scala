@@ -1,21 +1,16 @@
 package com.zuora.zan.reportbuilder.query
 import java.util.Date
 import java.lang.reflect.Field
-import com.datastax.driver.mapping.annotations.Column
 import scala.collection.mutable.Map
 
 class EntityMetadata[K](val entityClass: Class[K]) extends Metadata {
   val fields: Map[Class[_], Map[String, Field]] = Map()
-  protected def getFieldName(field: Field): String = {
-    val column = field.getAnnotation(classOf[Column])
-    if (column == null) field.getName else column.name
-  }
   
   private def getFieldsFrom(klass: Class[_]): Array[Field] = if(klass == null) Array() else  getFieldsFrom(klass.getSuperclass) ++ klass.getDeclaredFields
   
   protected def getFieldFromMap(name: String, klass: Class[_]): Field = {
     if (!fields.contains(klass))
-      fields(klass) = (Map[String, Field]() /: getFieldsFrom(klass))((m, f) => m + (getFieldName(f) -> f))
+      fields(klass) = (Map[String, Field]() /: getFieldsFrom(klass))((m, f) => m + (f.getName -> f))
     fields(klass)(name)
   }
   protected def getField(name: String, klass: Class[_]): Field = {

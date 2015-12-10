@@ -1,6 +1,5 @@
 package com.zuora.zan.reportbuilder.query
 
-import com.datastax.driver.core.Row
 import java.lang.Enum
 import java.lang.reflect.Field
 class BeanAdapter[K](val eClass: Class[K]) extends EntityMetadata(eClass) with Adapter[K] {

@@ -1,7 +1,6 @@
 package com.zuora.zan.reportbuilder.query
 import java.util.Date
 import java.lang.reflect.Field
-import com.datastax.driver.mapping.annotations.Column
 import scala.collection.mutable.Map
 
 class ParamMetadata extends Metadata {
