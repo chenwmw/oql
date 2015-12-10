@@ -3,6 +3,8 @@ package com.zuora.zan.reportbuilder.query.impl
 import com.zuora.zan.reportbuilder.query._
 import java.util.regex.Pattern
 
+case class SQLExpression(val fieldList:List[String], val tableName:String, val filterExp:Expression)
+
 trait Expression {
   def toString: String
   def getType: Type

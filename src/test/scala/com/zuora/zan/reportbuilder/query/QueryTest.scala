@@ -12,6 +12,9 @@ class QueryTest extends QuerySpec {
   "For 'or', John, William and Tod" should "exist in the result" in {
     select from persons where "age > 35 or height > 1.80" map { _.name } shouldBe List("John", "William", "Tod")
   }
+  "2nd For 'or', John, William and Tod" should "exist in the result" in {
+    database execute "select name, age, height from persons where age > 35 or height > 1.80" foreach println
+  }
   "For 'and', only John" should "exist in the result" in {
     select from persons where "age < 30 and height > 1.80" map { _.name } shouldBe List("John")
   }

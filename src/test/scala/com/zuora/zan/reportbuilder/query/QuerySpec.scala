@@ -27,5 +27,6 @@ class QuerySpec extends FlatSpec with Matchers {
         Person("William", false, 38, toDate("Apr 27, 1977"), 1.65, 3, Email("William", "Chen", "zuora.com")),
         Person("Tod", false, 49, null, 1.78, 4, Email("Tod", "Fu", "zuora.com")))
   def select:Query[Person] = Select(classOf[Person])
+  def database:SQLQuery[Person] = Database(classOf[Person], persons)
 }
 

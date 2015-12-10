@@ -37,7 +37,6 @@ public class ParserClassLoader extends ClassLoader {
 		CompiledCode compiledCode = new CompiledCode(className);
 		Iterable<? extends JavaFileObject> compilationUnits = Arrays.asList(sourceCode);
 		ParserClassLoader cl = new ParserClassLoader(ClassLoader.getSystemClassLoader());
-		System.out.println("javac = " + javac + " cl=" + cl + " className=" + className);		
 		CustomJavaFileManager fileManager = new CustomJavaFileManager(javac.getStandardFileManager(null, null, null), compiledCode, cl);
 		JavaCompiler.CompilationTask task = javac.getTask(null, fileManager, null, null, null, compilationUnits);
 		boolean result = task.call();
